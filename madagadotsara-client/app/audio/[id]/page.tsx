@@ -16,30 +16,107 @@ export default function AudioDetailPage({ params }: { params: Promise<{ id: stri
   const { id } = React.use(params);
 
   // Mock data - In a real app, this would come from an API
-  const audio = {
-    id: id,
-    title: 'Midnight Vibes',
-    creator: 'Ramy Beats',
-    creatorAvatar: '🎵',
-    price: 29,
-    genre: 'Hip-Hop',
-    bpm: 95,
-    duration: 180,
-    key: 'A Minor',
-    scale: 'Minor',
-    mood: 'Dark, Atmospheric',
-    usage: 'Rap/Hip-Hop',
-    license: 'Exclusive',
-    downloads: 324,
-    rating: 4.8,
-    reviews: 42,
-    description: 'Un beat sombre et atmosphérique parfait pour les productions rap modernes. Combinaison de synths profonds et de drums trap.',
-    tags: ['Trap', 'Dark', 'Atmospheric', 'Modern'],
-    files: {
-      preview: '/audio/preview.mp3',
-      full: '/audio/full.mp3',
+  // Différentes musiques selon l'ID
+  const audioDatabase: Record<string, any> = {
+    '1': {
+      id: '1',
+      title: 'Midnight Vibes',
+      creator: 'Ramy Beats',
+      creatorAvatar: '🎵',
+      price: 29,
+      genre: 'Hip-Hop',
+      bpm: 95,
+      duration: 180,
+      key: 'A Minor',
+      scale: 'Minor',
+      mood: 'Dark, Atmospheric',
+      usage: 'Rap/Hip-Hop',
+      license: 'Exclusive',
+      downloads: 324,
+      rating: 4.8,
+      reviews: 42,
+      description: 'Un beat sombre et atmosphérique parfait pour les productions rap modernes. Combinaison de synths profonds et de drums trap.',
+      tags: ['Trap', 'Dark', 'Atmospheric', 'Modern'],
+      files: {
+        preview: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
+        full: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
+      },
+    },
+    '2': {
+      id: '2',
+      title: 'Ocean Breeze',
+      creator: 'Lova Studio',
+      creatorAvatar: '🎧',
+      price: 25,
+      genre: 'Lo-Fi',
+      bpm: 80,
+      duration: 195,
+      key: 'C Major',
+      scale: 'Major',
+      mood: 'Chill, Relaxing',
+      usage: 'Lo-Fi/Chill',
+      license: 'Standard',
+      downloads: 456,
+      rating: 4.9,
+      reviews: 67,
+      description: 'Un beat lo-fi relaxant avec des sonorités océaniques. Parfait pour créer une ambiance chill et décontractée.',
+      tags: ['Lo-Fi', 'Chill', 'Relaxing', 'Ocean'],
+      files: {
+        preview: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
+        full: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
+      },
+    },
+    '3': {
+      id: '3',
+      title: 'Electric Dreams',
+      creator: 'Dizo Sounds',
+      creatorAvatar: '🎼',
+      price: 35,
+      genre: 'Electronic',
+      bpm: 128,
+      duration: 210,
+      key: 'G Minor',
+      scale: 'Minor',
+      mood: 'Energetic, Futuristic',
+      usage: 'EDM/Electronic',
+      license: 'Premium',
+      downloads: 289,
+      rating: 4.7,
+      reviews: 38,
+      description: 'Un morceau électronique énergique avec des synthés puissants et des drops explosifs. Idéal pour les productions EDM.',
+      tags: ['Electronic', 'EDM', 'Energetic', 'Synth'],
+      files: {
+        preview: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3',
+        full: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3',
+      },
+    },
+    '4': {
+      id: '4',
+      title: 'Tropical Paradise',
+      creator: 'Tsilaon Audio',
+      creatorAvatar: '🔊',
+      price: 28,
+      genre: 'Tropical House',
+      bpm: 110,
+      duration: 190,
+      key: 'D Major',
+      scale: 'Major',
+      mood: 'Happy, Uplifting',
+      usage: 'Pop/Tropical',
+      license: 'Standard',
+      downloads: 512,
+      rating: 4.9,
+      reviews: 85,
+      description: 'Un beat tropical house ensoleillé avec des vibes caribéennes. Parfait pour des productions estivales et entraînantes.',
+      tags: ['Tropical', 'House', 'Summer', 'Uplifting'],
+      files: {
+        preview: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3',
+        full: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3',
+      },
     },
   };
+
+  const audio = audioDatabase[id] || audioDatabase['1'];
 
   const licenseTerms = [
     'Licence d\'exploitation exclusive',
@@ -103,7 +180,12 @@ export default function AudioDetailPage({ params }: { params: Promise<{ id: stri
               </div>
 
               {/* Audio Player */}
-              <AudioPlayer title={audio.title} artist={audio.creator} isPreview={!isPurchased} />
+              <AudioPlayer 
+                title={audio.title} 
+                artist={audio.creator} 
+                audioUrl={isPurchased ? audio.files.full : audio.files.preview}
+                isPreview={!isPurchased} 
+              />
 
               {/* Description */}
               <Card>
