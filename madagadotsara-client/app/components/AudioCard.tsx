@@ -4,7 +4,7 @@ import Button from './Button';
 import Card from './Card';
 
 interface AudioCardProps {
-  id: string;
+  id: number | string;
   title: string;
   creator: string;
   price: number;
@@ -44,7 +44,7 @@ export default function AudioCard({ id, title, creator, price, image, genre, bpm
 
       {/* Footer */}
       <div className="flex items-center justify-between gap-2 pt-4 border-t border-gray-700">
-        <div className="text-2xl font-bold text-purple-400">${price}</div>
+        <div className="text-2xl font-bold text-purple-400">{price} Ar</div>
         <Link href={`/audio/${id}`}>
           <Button variant="primary" size="sm">
             Écouter

@@ -18,10 +18,10 @@ export default function Home() {
 
   // Mock data for featured audio
   const featuredAudio = [
-    { id: 1, title: 'Midnight Vibes', creator: 'Ramy Beats', price: 29, genre: 'Hip-Hop', bpm: 95 },
-    { id: 2, title: 'Ocean Breeze', creator: 'Lova Studio', price: 24, genre: 'Lo-Fi', bpm: 80 },
-    { id: 3, title: 'Electric Dreams', creator: 'Dizo Sounds', price: 35, genre: 'Electronic', bpm: 128 },
-    { id: 4, title: 'Tropical Paradise', creator: 'Tsilaon Audio', price: 26, genre: 'Tropical House', bpm: 110 },
+    { id: 1, title: 'Midnight Vibes', creator: 'Ramy Beats', price: 50000, genre: 'Hip-Hop', bpm: 95 },
+    { id: 2, title: 'Ocean Breeze', creator: 'Lova Studio', price: 40000, genre: 'Lo-Fi', bpm: 80 },
+    { id: 3, title: 'Electric Dreams', creator: 'Dizo Sounds', price: 60000, genre: 'Electronic', bpm: 128 },
+    { id: 4, title: 'Tropical Paradise', creator: 'Tsilaon Audio', price: 45000, genre: 'Tropical House', bpm: 110 },
   ];
 
   const categories = [

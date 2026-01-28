@@ -8,13 +8,16 @@ import AudioPlayer from '@/app/components/AudioPlayer';
 import Button from '@/app/components/Button';
 import Card from '@/app/components/Card';
 
-export default function AudioDetailPage({ params }: { params: { id: string } }) {
+export default function AudioDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const [isPurchased, setIsPurchased] = useState(false);
   const [showLicenseTerms, setShowLicenseTerms] = useState(false);
 
+  // Unwrap the params Promise
+  const { id } = React.use(params);
+
   // Mock data - In a real app, this would come from an API
   const audio = {
-    id: params.id,
+    id: id,
     title: 'Midnight Vibes',
     creator: 'Ramy Beats',
     creatorAvatar: '🎵',

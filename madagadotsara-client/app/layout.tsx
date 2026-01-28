@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -17,11 +17,12 @@ export const metadata: Metadata = {
   description: "La marketplace officielle des créations sonores malgaches. Beats, instrumentales et effets sonores de qualité professionnelle.",
   keywords: ["beats", "audio", "musique", "madagascar", "marketplace", "instrumentales"],
   authors: [{ name: "Madagadotsara" }],
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 5,
-  },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
 };
 
 export default function RootLayout({
